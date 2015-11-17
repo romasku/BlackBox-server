@@ -6,7 +6,11 @@ var sequelize = new Sequelize("blackbox", "b7fe3bd1d05e99", "918fec7b", {
         dialectOptions: {
                   timeout: 30
             },
-        pool: false
+        pool: {
+                max: 5,
+                min: 0,
+                idle: 10
+            }
 });
 
 User = sequelize.define('user', {
