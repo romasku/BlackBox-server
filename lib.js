@@ -26,7 +26,7 @@ function returnHtml(response, body){
 exports.defaultUsername="Username";
 exports.defaultScore=0;
 exports.defaultGoogleId="null";
-exports.databaseUrl="mysql://root:root@localhost:3306/BlackBox";
+exports.databaseUrl="mysql://b7fe3bd1d05e99:918fec7b@br-cdbr-azure-south-a.cloudapp.net:3306/blackbox";
 exports.leadersCount=50;
 
 exports.randomInt = randomInt;

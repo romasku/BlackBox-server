@@ -1,6 +1,13 @@
 var Sequelize = require('sequelize');
 var lib = require('./lib');
-var sequelize = new Sequelize(lib.databaseUrl);
+var sequelize = new Sequelize("blackbox", "b7fe3bd1d05e99", "918fec7b", {
+        host: "br-cdbr-azure-south-a.cloudapp.net",
+        dialect: "mysql",
+        dialectOptions: {
+                  timeout: 30
+            },
+        pool: false
+});
 
 User = sequelize.define('user', {
     id : { type: Sequelize.INTEGER, primaryKey: true},
