@@ -17,7 +17,7 @@ function getUsername(response, request){
 function uploadReplay(response, request)
 {
         var replay=url.parse(request.url,true).query;
-        if (replay["players_id"] && replay["time_won"] && replay["log"] && replay["game_id"])
+        if (replay["players_id"] && replay["is_multiplay"] && replay["log"] && replay["game_id"])
                 database.uploadReplay( parseInt(replay["players_id"]),
                         replay["is_multiplay"], replay["log"], parseInt(replay["game_id"]),
                         function(id){
