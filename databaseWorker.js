@@ -82,7 +82,7 @@ function updateScore(id, score, callback){
 	})
 }
 
-function uploadReplay(playersId, type, log, gameId, callback){
+function uploadReplay(playersId, type, log, gameId, rand, callback){
 	var newId=-1;
 	Replay.count().then(function(id) {
         id++;
@@ -92,7 +92,8 @@ function uploadReplay(playersId, type, log, gameId, callback){
             players_id: playersId,
             is_multiplay: type,
             log: log,
-            game_id: gameId
+            game_id: gameId,
+            rand : rand
         }).then(function(){ callback(newId) });
     });	
 }
