@@ -23,7 +23,7 @@ User = sequelize.define('user', {
 Replay = sequelize.define('replay', {
     id : { type: Sequelize.INTEGER, primaryKey: true},
 	players_id : Sequelize.INTEGER,
-	time_won : Sequelize.INTEGER,
+	is_multiplay : Sequelize.TEXT,
 	game_id : Sequelize.INTEGER,
 	log : Sequelize.TEXT
 });
@@ -81,7 +81,7 @@ function updateScore(id, score, callback){
 	})
 }
 
-function uploadReplay(playersId, timeWon, log, gameId, callback){
+function uploadReplay(playersId, type, log, gameId, callback){
 	var newId=-1;
 	Replay.count().then(function(id) {
         id++;
@@ -89,7 +89,7 @@ function uploadReplay(playersId, timeWon, log, gameId, callback){
         Replay.create({
             id: id,
             players_id: playersId,
-            time_won: timeWon,
+            is_multiplay: type,
             log: log,
             game_id: gameId
         }).then(function(){ callback(newId) });
@@ -106,7 +106,7 @@ function randomReplay(callback){
 }
 
 
-exports.init=function(){
+exports.init = function() {
 	sequelize.sync();
 }
 exports.getTopUsers = getTopUsers;
