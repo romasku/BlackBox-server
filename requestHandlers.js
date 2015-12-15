@@ -99,13 +99,17 @@ function setName(response,request)
         });
         else lib.returnMessage(response, "Wrong GET");
 }
-function setScore(response,request)
+function addScore(response,request)
 {
         fields=url.parse(request.url, true).query;
         if (fields["id"]&&fields["score"])
-                database.updateScore(parseInt(fields["id"]),parseInt(fields["score"]),function(res){
-                lib.returnMessage(response,res);
-        });
+        {
+            database.getUserById(parseInt(fields["id"]), function(user){
+                database.updateScore(parseInt(fields["id"]),parseInt(fields["score"]) + user.score, function(res){
+                    lib.returnMessage(response,res);
+                });
+            });
+        }
         else lib.returnMessage(response, "Wrong GET");
 }
 
@@ -122,7 +126,7 @@ function getStyle(response){
     });
 }
 
-exports.setScore = setScore;
+exports.addScore = addScore;
 exports.getUsername = getUsername;
 exports.uploadReplay = uploadReplay;
 exports.register = register;
