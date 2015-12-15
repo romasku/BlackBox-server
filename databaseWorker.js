@@ -25,7 +25,8 @@ Replay = sequelize.define('replay', {
 	players_id : Sequelize.INTEGER,
 	is_multiplay : Sequelize.TEXT,
 	game_id : Sequelize.STRING(80),
-	log : Sequelize.TEXT
+	log : Sequelize.TEXT,
+	rand: Sequelize.INTEGER,
 });
 
 function getTopUsers(num, callback){
