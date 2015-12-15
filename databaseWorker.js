@@ -24,7 +24,7 @@ Replay = sequelize.define('replay', {
     id : { type: Sequelize.INTEGER, primaryKey: true},
 	players_id : Sequelize.INTEGER,
 	is_multiplay : Sequelize.TEXT,
-	game_id : Sequelize.STRING,
+	game_id : Sequelize.STRING(80),
 	log : Sequelize.TEXT
 });
 
