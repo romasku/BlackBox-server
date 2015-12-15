@@ -19,7 +19,7 @@ function uploadReplay(response, request)
         var replay=url.parse(request.url,true).query;
         if (replay["players_id"] && replay["is_multiplay"] && replay["log"] && replay["game_id"])
                 database.uploadReplay( parseInt(replay["players_id"]),
-                        replay["is_multiplay"], replay["log"], parseInt(replay["game_id"]),
+                        replay["is_multiplay"], replay["log"], replay["game_id"],
                         function(id){
                                 if (id) lib.returnMessage(response,id);
                                 else lib.returnMessage(response, "BD Error");
